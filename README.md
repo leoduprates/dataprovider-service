@@ -1,4 +1,4 @@
-# Dataprovider-Service
+# javascript-dataprovider-rest-service
 
 Dataprovider desenvolvido em REST para ser utilizado em testes automatizados. 
 
