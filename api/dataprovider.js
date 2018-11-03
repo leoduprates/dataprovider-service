@@ -8,21 +8,25 @@ module.exports = function(app) {
     var property = query.property.split(",");
     var quantity = query.quantity;
 
-    console.log(property.length);
+    console.log(property);
+    console.log(quantity);
 
     if (query.property == "") {
       return model.helper;
     }
 
-    if (quantity === "") {
+    if (quantity === "" || typeof quantity === "undefined") {
       quantity = 1
     }
 
     for (var i = 0; i < quantity; i++) {
       var object = {}
+      console.log('a');
       for (var j = 0; j < property.length; j++) {
         object[property[j]] = model.generator(property[j]);
+        console.log(property[j]);
       }
+
       data.push(object)
     }
 

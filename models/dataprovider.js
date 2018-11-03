@@ -1,7 +1,6 @@
 module.exports = function(app) {
   var model = {};
   var faker = require('faker/locale/pt_BR');
-  var barcode = app.models.barcode;
 
   model.generator = function(property) {
     var value;
@@ -273,19 +272,13 @@ module.exports = function(app) {
       case "filePath":
         value = faker.system.filePath();
         break;
-      case "barcodeSantander":
-        value = barcode.santander().replace(/\./g, "");
-        break;
-      case "barcodeBradesco":
-        value = barcode.bradesco().replace(/\./g, "");;
-        break;
       default:
         value = "Requested operation is not supported.";
     }
     return value;
   }
 
-  model.helper = {  "message" : "Select dataprovider opetions.",
+  model.helper = {  "message" : "Select dataprovider options.",
                     "options" : "account, accountName, alphaNumeric, amount, arrayElement, avatar, between, bic, bitcoinAddress, boolean, city, cityPrefix, citySuffix, color, commonFileExt, commonFileName, commonFileType, country, countryCode, county, currencyCode, currencyName, currencySymbol, directoryPath, domainName, domainSuffix, domainWord, email, ethereumAddress, exampleEmail, fileExt, fileName, filePath, fileType, findName, firstName, future, hexaDecimal, iban, image, ip, ipv6, jobArea, jobDescriptor, jobTitle, jobType, lastName, latitude, lines, locale, longitude, mac, mask, mimeType, month, number, objectElement, paragraph, paragraphs, password, past, phoneFormats, phoneNumber, phoneNumberFormat, prefix, protocol, recent, secondaryAddress, semver, sentence, sentences, slug, soon, state, stateAbbr, streetAddress, streetName, streetPrefix, streetSuffix, suffix, text, title, transactionType, url, userAgent, userName, uuid, weekday, word, word, words, words, zipCode"};
 
   return model;
