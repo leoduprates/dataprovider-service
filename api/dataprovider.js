@@ -5,26 +5,23 @@ module.exports = function(app) {
 
   api.dataprovider = function(query) {
     var data = [];
-    var property = query.property.split(",");
     var quantity = query.quantity;
-
-    console.log(property);
-    console.log(quantity);
-
-    if (query.property == "") {
-      return model.helper;
-    }
+    var property = query.property;
 
     if (quantity === "" || typeof quantity === "undefined") {
       quantity = 1
     }
 
+    if (property == "" || typeof property === "undefined") {
+      return model.helper;
+    } else {
+      property = query.property.split(",");
+    }
+
     for (var i = 0; i < quantity; i++) {
       var object = {}
-      console.log('a');
       for (var j = 0; j < property.length; j++) {
         object[property[j]] = model.generator(property[j]);
-        console.log(property[j]);
       }
 
       data.push(object)

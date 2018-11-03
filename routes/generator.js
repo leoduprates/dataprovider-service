@@ -9,7 +9,6 @@ module.exports = function(app) {
         }
       });
     } else {
-      console.log(req.query);
       res.json(api.dataprovider(req.query));
     }
   });
